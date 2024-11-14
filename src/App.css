@@ -37,8 +37,15 @@ main {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-button {
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espacio entre los botones */
   margin-top: 20px;
+  flex-wrap: wrap; /* Permite que los botones se envuelvan */
+}
+
+button {
   background-color: #ff4500;
   color: white;
   font-size: 1.2em;
@@ -51,6 +58,14 @@ button {
 
 button:hover {
   background-color: #ff6347;
+}
+
+button.secondary {
+  background-color: #0b2c87;
+}
+
+button.secondary:hover {
+  background-color: #3232a5;
 }
 
 @media (max-width: 768px) {
@@ -66,6 +81,11 @@ button:hover {
   button {
     font-size: 1em;
     padding: 8px 16px;
+  }
+
+  .button-container {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+    gap: 10px; /* Espacio entre los botones en pantallas pequeñas */
   }
 }
 

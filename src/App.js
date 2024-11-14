@@ -12,7 +12,10 @@ function App() {
         <div className="blockly-container">
           <BlocklyComponent />
         </div>
-        <button>Generar Código</button>
+        <div className="button-container">
+          <button>Generar Código</button>
+          <button className="secondary">Comprobar Conexión</button>
+        </div>
       </main>
     </div>
   );

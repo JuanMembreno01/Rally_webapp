@@ -45,6 +45,20 @@ const BlocklyComponent = () => {
       }
     };
 
+    Blockly.Blocks['variables_set'] = {
+      init: function () {
+        this.appendValueInput("VALUE")
+          .setCheck(null)
+          .appendField("set")
+          .appendField(new Blockly.FieldVariable("item"), "VAR")
+          .appendField("to");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+      }
+    };
     Blockly.Blocks['motor_rotate'] = {
       init: function () {
         this.jsonInit({
