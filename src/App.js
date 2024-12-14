@@ -13,7 +13,7 @@ function App() {
           <BlocklyComponent />
         </div>
         <div className="button-container">
-          <button>Generar Código</button>
+          {/* Sólo el botón secundario queda aquí */}
           <button className="secondary">Comprobar Conexión</button>
         </div>
       </main>
