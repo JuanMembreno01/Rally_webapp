@@ -1,5 +1,4 @@
 /* App.css */
-
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif; 
@@ -10,31 +9,11 @@ body {
 }
 
 /* Estrellas en el fondo */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: transparent;
+#particles canvas {
   z-index: -1;
-  pointer-events: none;
-  animation: stars 50s linear infinite;
-  box-shadow: 
-    0vw 0vh #fff, 1vw 2vh #fff, 2vw 1vh #fff, 3vw 2vh #fff, 4vw 3vh #fff,
-    5vw 2vh #fff, 6vw 4vh #fff, 7vw 1vh #fff, 8vw 3vh #fff, 9vw 2vh #fff,
-    10vw 4vh #fff, 11vw 1vh #fff, 12vw 2vh #fff, 13vw 3vh #fff, 14vw 4vh #fff,
-    15vw 2vh #fff, 16vw 1vh #fff, 17vw 3vh #fff, 18vw 2vh #fff, 19vw 4vh #fff,
-    20vw 1vh #fff, 21vw 2vh #fff, 22vw 3vh #fff, 23vw 4vh #fff, 24vw 2vh #fff,
-    25vw 1vh #fff, 26vw 3vh #fff, 27vw 2vh #fff, 28vw 4vh #fff, 29vw 3vh #fff,
-    30vw 1vh #fff, 31vw 2vh #fff, 32vw 3vh #fff, 33vw 4vh #fff, 34vw 2vh #fff,
-    35vw 2vh #fff, 36vw 4vh #fff, 37vw 1vh #fff, 38vw 3vh #fff, 39vw 2vh #fff,
-    40vw 4vh #fff, 41vw 1vh #fff, 42vw 2vh #fff, 43vw 3vh #fff, 44vw 4vh #fff,
-    45vw 2vh #fff, 46vw 1vh #fff, 47vw 3vh #fff, 48vw 2vh #fff, 49vw 4vh #fff;
-}
-
-@keyframes stars {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-10px); }
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .App {
@@ -60,19 +39,17 @@ main {
   align-items: center;
 }
 
-/* Contenedor semi-transparente */
 .blockly-container {
   width: 100%;
   max-width: 800px;
   border: 3px solid #39ff14;
   border-radius: 15px;
   box-shadow: 0 0 20px #39ff14, 0 0 40px #00ffff;
-  background: rgba(0,0,0,0.6); /* más claro para ver estrellas mejor */
+  background: rgba(0,0,0,0.6);
   padding: 20px;
   position: relative;
 }
 
-/* Separar el botón del workspace */
 button {
   background: transparent;
   color: #ff00ff;
@@ -97,7 +74,6 @@ button:hover {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px;
   flex-wrap: wrap;
 }
 

@@ -263,9 +263,6 @@ const BlocklyComponent = () => {
 
   return (
     <div>
-      <button onClick={generateCode}>
-        Generar Código
-      </button>
       <div
         ref={blocklyDiv}
         style={{
@@ -273,12 +270,15 @@ const BlocklyComponent = () => {
           width: '100%',
           maxWidth: '800px',
           border: '1px solid #ccc',
-          marginBottom: '30px',
+          marginBottom: '20px',
           boxShadow: '0 0 10px #39ff14, 0 0 20px #00ffff',
           borderRadius: '10px',
           background: 'transparent',
         }}>
       </div>
+      <button onClick={generateCode}>
+        Generar Código
+      </button>
     </div>
   );
 };
