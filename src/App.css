@@ -1,81 +1,143 @@
-/* App.css */
-
 body {
   margin: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  background-color: #f0f8ff;
+  font-family: 'Orbitron', sans-serif; 
+  background: #000; 
+  color: #00ffff;
+  overflow-x: hidden;
+  position: relative; 
+}
+
+/* Estrellas en el fondo */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: transparent;
+  z-index: -1;
+  pointer-events: none;
+  animation: stars 50s linear infinite;
+  box-shadow: 
+    0vw 0vh #fff, 1vw 2vh #fff, 2vw 1vh #fff, 3vw 2vh #fff, 4vw 3vh #fff,
+    5vw 2vh #fff, 6vw 4vh #fff, 7vw 1vh #fff, 8vw 3vh #fff, 9vw 2vh #fff,
+    10vw 4vh #fff, 11vw 1vh #fff, 12vw 2vh #fff, 13vw 3vh #fff, 14vw 4vh #fff,
+    15vw 2vh #fff, 16vw 1vh #fff, 17vw 3vh #fff, 18vw 2vh #fff, 19vw 4vh #fff,
+    20vw 1vh #fff, 21vw 2vh #fff, 22vw 3vh #fff, 23vw 4vh #fff, 24vw 2vh #fff,
+    25vw 1vh #fff, 26vw 3vh #fff, 27vw 2vh #fff, 28vw 4vh #fff, 29vw 3vh #fff,
+    30vw 1vh #fff, 31vw 2vh #fff, 32vw 3vh #fff, 33vw 4vh #fff, 34vw 2vh #fff,
+    35vw 2vh #fff, 36vw 4vh #fff, 37vw 1vh #fff, 38vw 3vh #fff, 39vw 2vh #fff,
+    40vw 4vh #fff, 41vw 1vh #fff, 42vw 2vh #fff, 43vw 3vh #fff, 44vw 4vh #fff,
+    45vw 2vh #fff, 46vw 1vh #fff, 47vw 3vh #fff, 48vw 2vh #fff, 49vw 4vh #fff;
+}
+
+@keyframes stars {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
 }
 
 .App {
   text-align: center;
   padding: 20px;
+  background: transparent;
 }
 
 header {
-  background-color: #ffcccb;
+  font-size: 2.5em;
   padding: 15px;
-  color: #ff5733;
-  font-size: 2em;
-  border-bottom: 5px solid #ff6666;
+  border-bottom: 2px solid #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 30px #39ff14;
+  background: linear-gradient(90deg, #39ff14 0%, #00ffff 50%, #ff00ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 main {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
+/* Contenedor semi-transparente */
 .blockly-container {
-  height: 480px;
   width: 100%;
   max-width: 800px;
-  border: 3px solid #ff6347;
+  border: 3px solid #39ff14;
   border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px #39ff14, 0 0 40px #00ffff;
+  background: rgba(0,0,0,0.6); /* más claro para ver estrellas mejor */
+  padding: 20px;
+  position: relative;
+}
+
+/* Separar el botón del workspace */
+button {
+  background: transparent;
+  color: #ff00ff;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-shadow: 0 0 5px #ff00ff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background: #ff00ff;
+  color: #000;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 20px;
   margin-top: 20px;
-  flex-wrap: wrap; /* Permite que los botones se envuelvan */
-}
-
-button {
-  background-color: #ff4500;
-  color: white;
-  font-size: 1.2em;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #ff6347;
+  flex-wrap: wrap;
 }
 
 button.secondary {
-  background-color: #0b2c87;
+  border-color: #00ffff;
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff;
 }
 
 button.secondary:hover {
-  background-color: #3232a5;
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #39ff14;
+}
+
+/* Hacer el workspace transparente */
+.blocklySvg {
+  background: none !important;
+}
+
+.blocklyMainBackground {
+  fill: none !important;
+}
+
+/* Toolbox semi-transparente */
+.blocklyToolboxDiv {
+  background: rgba(0,0,0,0.5) !important;
+}
+
+/* Flyout semi-transparente */
+.blocklyFlyoutBackground path {
+  fill: rgba(0,0,0,0.5) !important;
+}
+
+/* Scrollbars transparentes */
+.blocklyScrollbarBackground {
+  fill: none !important;
 }
 
 @media (max-width: 768px) {
-  .blockly-container {
-    height: 400px;
-    max-width: 100%;
-  }
-
   header {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
 
   button {
@@ -84,14 +146,14 @@ button.secondary:hover {
   }
 
   .button-container {
-    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
-    gap: 10px; /* Espacio entre los botones en pantallas pequeñas */
+    flex-direction: column;
+    gap: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .blockly-container {
-    height: 300px;
+  header {
+    font-size: 1.5em;
   }
 
   button {
