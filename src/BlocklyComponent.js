@@ -245,11 +245,9 @@ const BlocklyComponent = () => {
           marginBottom: '30px',
           boxShadow: '0 0 10px #39ff14, 0 0 20px #00ffff',
           borderRadius: '10px',
-          // Quitar esta línea: background:'#000'
-          background: 'transparent'
+          background: 'transparent' // Importante
         }}>
       </div>
-
 
 
     </div>
