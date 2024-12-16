@@ -221,13 +221,7 @@ const BlocklyComponent = () => {
         }
       });
 
-      return {
-        commands: [
-          {
-            commands: commands
-          }
-        ]
-      };
+      return { commands };
     } else {
       console.warn("workspace.current es undefined");
       return null;
