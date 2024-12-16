@@ -161,3 +161,26 @@ button.secondary:hover {
     padding: 6px 12px;
   }
 }
+
+/* Fuerza transparencia del workspace de Blockly */
+.blocklySvg {
+  background: none !important;
+}
+
+.blocklyMainBackground {
+  fill: none !important;
+}
+
+/* Toolbox y Flyout semi-transparentes */
+.blocklyToolboxDiv {
+  background: rgba(0,0,0,0.3) !important;
+}
+
+.blocklyFlyoutBackground path {
+  fill: rgba(0,0,0,0.3) !important;
+}
+
+/* Scrollbars transparentes */
+.blocklyScrollbarBackground {
+  fill: none !important;
+}
