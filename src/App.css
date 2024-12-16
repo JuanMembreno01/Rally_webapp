@@ -1,3 +1,5 @@
+/* App.css */
+
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif; 
@@ -133,6 +135,22 @@ button.secondary:hover {
 /* Scrollbars transparentes */
 .blocklyScrollbarBackground {
   fill: none !important;
+}
+
+/* Cambiar el color del texto en los bloques */
+.blocklySvg .blocklyText {
+  fill: #ffffff; /* Blanco para mejor contraste */
+  font-weight: bold;
+}
+
+/* Añadir un efecto de glow a los bloques */
+.blocklyBlockCanvas .blocklyBlock {
+  filter: drop-shadow(0 0 8px #00ffff) drop-shadow(0 0 16px #00ffff);
+}
+
+/* Glow adicional en hover */
+.blocklyBlockCanvas .blocklyBlock:hover {
+  filter: drop-shadow(0 0 12px #00ffff) drop-shadow(0 0 24px #00ffff);
 }
 
 @media (max-width: 768px) {

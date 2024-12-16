@@ -4,6 +4,14 @@ import 'blockly/blocks';
 import * as BlocklyMsg from 'blockly/msg/es';
 Blockly.setLocale(BlocklyMsg);
 
+// Definición de imágenes SVG con contorno blanco
+const arrowForward = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M12 2 L12 22 M12 22 L5 15 M12 22 L19 15" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
+const arrowBackward = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M12 22 L12 2 M12 2 L5 9 M12 2 L19 9" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
+const arrowRight = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M2 12 L22 12 M22 12 L15 5 M22 12 L15 19" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
+const arrowLeft = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M22 12 L2 12 M2 12 L9 5 M2 12 L9 19" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
+const stop = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Crect x="4" y="4" width="16" height="16" stroke="%23ffffff" stroke-width="2" /%3E%3C/svg%3E';
+
+// Mapeo de tipos de bloque a comandos
 const blockTypeToCommandType = {
   girar_derecha: "turn_right",
   girar_izquierda: "turn_left",
@@ -16,14 +24,9 @@ const BlocklyComponent = () => {
   const blocklyDiv = useRef(null);
   const workspace = useRef(null);
 
-  const arrowForward = 'data:image/svg+xml,%3Csvg%20...%3E';
-  const arrowBackward = 'data:image/svg+xml,%3Csvg%20...%3E';
-  const arrowRight = 'data:image/svg+xml,%3Csvg%20...%3E';
-  const arrowLeft = 'data:image/svg+xml,%3Csvg%20...%3E';
-  const stop = 'data:image/svg+xml,%3Csvg%20...%3E';
-
   useEffect(() => {
     if (!workspace.current) {
+      // Bloque girar_derecha (Magenta)
       Blockly.Blocks['girar_derecha'] = {
         init: function () {
           this.jsonInit({
@@ -39,13 +42,14 @@ const BlocklyComponent = () => {
             ],
             "previousStatement": null,
             "nextStatement": null,
-            "colour": 230,
+            "colour": "#ff00ff", 
             "tooltip": "Gira el carrito a la derecha.",
             "helpUrl": ""
           });
         }
       };
 
+      // Bloque girar_izquierda (Rojo)
       Blockly.Blocks['girar_izquierda'] = {
         init: function () {
           this.jsonInit({
@@ -61,13 +65,14 @@ const BlocklyComponent = () => {
             ],
             "previousStatement": null,
             "nextStatement": null,
-            "colour": 230,
+            "colour": "#ff0000",
             "tooltip": "Gira el carrito a la izquierda.",
             "helpUrl": ""
           });
         }
       };
 
+      // Bloque mover_adelante (Cian)
       Blockly.Blocks['mover_adelante'] = {
         init: function () {
           this.jsonInit({
@@ -83,13 +88,14 @@ const BlocklyComponent = () => {
             ],
             "previousStatement": null,
             "nextStatement": null,
-            "colour": 160,
+            "colour": "#00ffff", 
             "tooltip": "Mueve el carrito hacia adelante.",
             "helpUrl": ""
           });
         }
       };
 
+      // Bloque mover_atras (Verde Lima)
       Blockly.Blocks['mover_atras'] = {
         init: function () {
           this.jsonInit({
@@ -105,13 +111,14 @@ const BlocklyComponent = () => {
             ],
             "previousStatement": null,
             "nextStatement": null,
-            "colour": 160,
+            "colour": "#00ff00", 
             "tooltip": "Mueve el carrito hacia atrás.",
             "helpUrl": ""
           });
         }
       };
 
+      // Bloque motor_stop (Amarillo)
       Blockly.Blocks['motor_stop'] = {
         init: function () {
           this.jsonInit({
@@ -127,14 +134,15 @@ const BlocklyComponent = () => {
             ],
             "previousStatement": null,
             "nextStatement": null,
-            "colour": 0,
+            "colour": "#ffa500",
             "tooltip": "Detiene el motor seleccionado.",
             "helpUrl": ""
           });
         }
       };
 
-      Blockly.Blocks['controls_repeat_ext'] = {
+      // Bloque repetir (Verde Neón)
+    /* Blockly.Blocks['controls_repeat_ext'] = {
         init: function () {
           this.jsonInit({
             "message0": "Repetir %1 veces",
@@ -147,13 +155,14 @@ const BlocklyComponent = () => {
             ],
             "previousStatement": null,
             "nextStatement": null,
-            "colour": 120,
+            "colour": "#39ff14",
             "tooltip": "Repite una serie de instrucciones varias veces.",
             "helpUrl": ""
           });
         }
-      };
+      };*/
 
+      // Inyectar Blockly  <block type="controls_repeat_ext">   <block type="math_number"></block>
       workspace.current = Blockly.inject(blocklyDiv.current, {
         toolbox: `<xml>
                     <block type="mover_adelante"></block>
@@ -161,8 +170,8 @@ const BlocklyComponent = () => {
                     <block type="girar_derecha"></block>
                     <block type="girar_izquierda"></block>
                     <block type="motor_stop"></block>
-                    <block type="math_number"></block>
-                    <block type="controls_repeat_ext">
+                    
+                 
                       <value name="TIMES">
                         <block type="math_number">
                           <field name="NUM">1</field>
@@ -170,23 +179,45 @@ const BlocklyComponent = () => {
                       </value>
                     </block>
                   </xml>`,
-        disableContextMenu: true
+        disableContextMenu: false,
+      });
+
+      // Registrar la opción en el menú contextual para limpiar todo
+      Blockly.ContextMenuRegistry.registry.register({
+        id: 'clear_workspace',
+        scopeType: Blockly.ContextMenuRegistry.ScopeType.WORKSPACE,
+        precondition: function(scope) {
+          const ws = scope.workspace;
+          return ws.getAllBlocks(false).length > 0 ? 'enabled' : 'disabled';
+        },
+        weight: 210,
+        displayText: function() {
+          return 'Limpiar todo';
+        },
+        callback: function(scope) {
+          const ws = scope.workspace;
+          ws.clear();
+        }
       });
     }
   }, []);
 
   const getAllBlocksJSON = () => {
     if (workspace.current) {
-      const blocks = workspace.current.getTopBlocks(true);
+      const topBlocks = workspace.current.getTopBlocks(true);
       const commands = [];
-      const sortedBlocks = blocks.sort((a, b) => a.getRelativeToSurfaceXY().y - b.getRelativeToSurfaceXY().y);
+      const sortedBlocks = topBlocks.sort((a, b) => a.getRelativeToSurfaceXY().y - b.getRelativeToSurfaceXY().y);
 
-      sortedBlocks.forEach(block => {
-        const commandType = blockTypeToCommandType[block.type];
-        if (commandType) {
-          commands.push({ type: commandType });
-        } else {
-          console.warn(`Tipo de bloque desconocido: ${block.type}`);
+      sortedBlocks.forEach(topBlock => {
+        let currentBlock = topBlock;
+        while (currentBlock) {
+          const commandType = blockTypeToCommandType[currentBlock.type];
+          if (commandType) {
+            commands.push({ type: commandType });
+          } else {
+            console.warn(`Tipo de bloque desconocido: ${currentBlock.type}`);
+          }
+          currentBlock = currentBlock.getNextBlock();
         }
       });
 
@@ -245,11 +276,9 @@ const BlocklyComponent = () => {
           marginBottom: '30px',
           boxShadow: '0 0 10px #39ff14, 0 0 20px #00ffff',
           borderRadius: '10px',
-          background: 'transparent' // Importante
+          background: 'transparent',
         }}>
       </div>
-
-
     </div>
   );
 };
