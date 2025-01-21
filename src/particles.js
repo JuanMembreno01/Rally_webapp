@@ -1,40 +1,31 @@
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
-// import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
-
-
+import { loadSlim } from "@tsparticles/slim"; // Importa solo lo necesario para reducir el tamaño del bundle
 
 const ParticlesComponent = (props) => {
+  const [init, setInit] = useState(false); // Estado para controlar la inicialización
 
-  const [ setInit] = useState(false);
-  // this should be run only once per application lifetime
+  // Inicializa las partículas una vez al montar el componente
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
+      // Carga las características necesarias del motor de partículas
       await loadSlim(engine);
-      //await loadBasic(engine);
     }).then(() => {
-      setInit(true);
+      setInit(true); // Marca como inicializado
     });
   }, []);
 
+  // Callback cuando las partículas están completamente cargadas
   const particlesLoaded = (container) => {
-    console.log(container);
+    console.log("Partículas cargadas:", container);
   };
 
-
+  // Configuración de las partículas, memoizada para mejorar el rendimiento
   const options = useMemo(
     () => ({
       background: {
         color: {
-          value: "#0",
+          value: "#0", // Fondo negro
         },
       },
       fpsLimit: 120,
@@ -42,11 +33,11 @@ const ParticlesComponent = (props) => {
         events: {
           onClick: {
             enable: true,
-            mode: "repulse",
+            mode: "repulse", // Repeler partículas al hacer clic
           },
           onHover: {
             enable: true,
-            mode: 'grab',
+            mode: "grab", // Conexión al pasar el mouse
           },
         },
         modes: {
@@ -98,11 +89,17 @@ const ParticlesComponent = (props) => {
       },
       detectRetina: true,
     }),
-    [],
+    []
   );
 
-
-  return <Particles id={props.id} init={particlesLoaded} options={options} />; 
+  return (
+    <>
+      {/* Muestra un mensaje de carga mientras se inicializan las partículas */}
+      {!init && <p>Cargando partículas...</p>}
+      {/* Muestra las partículas después de inicializarlas */}
+      {init && <Particles id={props.id} init={particlesLoaded} options={options} />}
+    </>
+  );
 };
 
 export default ParticlesComponent;
