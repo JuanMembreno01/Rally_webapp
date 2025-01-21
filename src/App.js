@@ -15,7 +15,7 @@ function App() {
           <BlocklyComponent />
         </div>
         <div className="button-container">
-          <button className="secondary">Comprobar Conexión</button>
+        
         </div>
       </main>
     </div>
