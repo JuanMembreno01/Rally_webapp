@@ -11,8 +11,8 @@ import leftTurn90 from './assets/left-turn90.png';
 Blockly.setLocale(BlocklyMsg);
 
 // Definición de flechas en formato SVG (codificadas en base64 / data-URI)
-const arrowForward = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M12 2 L12 22 M12 22 L5 15 M12 22 L19 15" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
-const arrowBackward = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M12 22 L12 2 M12 2 L5 9 M12 2 L19 9" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
+const arrowForward = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M12 22 L12 2 M12 2 L5 9 M12 2 L19 9" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
+const arrowBackward = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M12 2 L12 22 M12 22 L5 15 M12 22 L19 15" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
 const arrowRight = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M2 12 L22 12 M22 12 L15 5 M22 12 L15 19" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
 const arrowLeft = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Cpath d="M22 12 L2 12 M2 12 L9 5 M2 12 L9 19" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" /%3E%3C/svg%3E';
 const stop = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"%3E%3Crect x="4" y="4" width="16" height="16" stroke="%23ffffff" stroke-width="2" /%3E%3C/svg%3E';
