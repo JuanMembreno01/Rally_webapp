@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <ParticlesComponent id="particles"/>
       <header>
-        ¡Diviértete con TechVoyager!
+        ¡Diviértete con TecnoBot!
       </header>
       <main>
         <div className="blockly-container">
