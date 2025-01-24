@@ -251,7 +251,7 @@ const BlocklyComponent = () => {
             <block type="girar_izquierda"></block>
             <block type="girar_izquierda90"></block>
             <block type="girar_izquierda25"></block>
-            <block type="motor_stop"></block>
+            
             <value name="TIMES">
               <block type="math_number">
                 <field name="NUM">1</field>
